@@ -1,0 +1,19 @@
+
+version: '1.0'
+config-version: 2
+
+profile: 'appen_redshift_recruiting'
+
+name: "{{ var('DBT_PROJECT_NAME') }}"
+model-paths: ["models"]
+test-paths: ["tests"]
+target-path: "/tmp/dbt/{{ var('DBT_PROJECT_NAME') }}/target"
+log-path: "/tmp/dbt/{{ var('DBT_PROJECT_NAME') }}/logs"
+packages-install-path: "dbt_packages"
+
+clean-targets:
+  - "/tmp/dbt/{{ var('DBT_PROJECT_NAME') }}"
+
+models:
+  +grants:
+    select: "{{ ['modeanalytics', 'crm', 'odd_user'] if target.name == 'PROD' else ['odd_user'] }}"
