@@ -8,4 +8,5 @@
 airflowDAGsPipeline {
   credentialsName = 'airflow-dags'
   airflow_bucket = 'appen-mwaa-files'
+  dbt_deps = 'true'
 }
