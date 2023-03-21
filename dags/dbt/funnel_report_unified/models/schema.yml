@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: qrp
+    schema: qrp
+    tables:
+      - name: exp_user_project_mappings
+      - name: exp_user_project_access_status_changes
+      - name: users
+      - name: user_status_changes
+      - name: exp_project_hiring_targets
+      - name: user_activity_log_records
+  - name: dim
+    schema: dim
+    tables:
+      - name: dim_country
+      - name: dim_projects
+  - name: invoicing
+    schema: invoicing
+    tables:
+      - name: fct_contributor_invoices

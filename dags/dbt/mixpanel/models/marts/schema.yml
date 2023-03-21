@@ -1,0 +1,33 @@
+
+version: 2
+
+# SOURCES DEFINITIONS
+sources:
+  - name: qrp
+    schema: qrp
+    tables:
+      - name: users
+
+  - name: invoicing
+    schema: invoicing
+    tables:
+      - name: fct_contributor_invoices
+
+  - name: recruiting
+    schema: recruiting
+    tables:
+      - name: fct_funnel_report_flow_status
+
+  - name: mixpanel_es_shasta
+    schema: mixpanel_es_shasta
+    tables:
+      - name: mp_master_event
+
+# TESTS DEFINITIONS
+models:
+  - name: fct_contributors_verify_email
+    columns:
+      - name: distinct_id
+        tests:
+          - not_null
+ 

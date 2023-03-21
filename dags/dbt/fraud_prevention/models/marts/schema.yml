@@ -1,0 +1,54 @@
+version: 2
+
+# SOURCES DEFINITIONS
+sources:
+  - name: qrp
+    schema: qrp
+    tables:
+      - name: user_activity_log_records
+      - name: exp_country_payrates
+      - name: user_payoneer_ids
+      - name: invoices
+      - name: users
+
+  - name: recruiting
+    schema: recruiting
+    tables:
+      - name: internal_ips
+
+  - name: ipqs
+    schema: ipqs
+    tables:
+      - name: ip_quality_history
+
+  - name: dim
+    schema: dim
+    tables:
+      - name: dim_contributors
+
+  - name: crowdcrm
+    schema: crowdcrm
+    tables:
+      - name: dim_suspicious_ips
+      - name: fct_aggregated_ipqs_score
+      - name: stg_sp_users
+      - name: same_phone_numbers
+      - name: sim_ticket_bodies
+      - name: similar_addresses
+
+# TESTS DEFINITIONS
+models:
+  - name: fct_contributor_logins
+    columns:
+      - name: login_id
+        tests:
+          - not_null
+      - name: contributor_id
+        tests:
+          - not_null
+
+  - name: fct_contributor_ip_addresses
+    columns:
+      - name: contributor_id
+        tests:
+          - not_null

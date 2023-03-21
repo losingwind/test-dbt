@@ -1,0 +1,149 @@
+version: 2
+
+sources:
+  - name: qrp
+    schema: qrp
+    tables:
+      - name: customers
+      - name: exp_projects
+      - name: exp_locales
+      - name: quizzes
+      - name: quiz_questions
+      - name: quiz_question_items
+      - name: teams
+      - name: users
+      - name: user_teams
+      - name: user_notes
+      - name: exp_country_payrates
+      - name: user_geos
+      - name: tenants
+      - name: user_payoneer_ids
+      - name: invoices
+      - name: user_activity_log_records
+      - name: user_email_unsubscriptions
+      - name: exp_user_locales
+      - name: user_profiles
+      - name: campaigns
+      - name: clients
+  - name: dim
+    schema: dim
+    tables:
+      - name: dim_country
+      - name: dim_language
+  - name: r_akon
+    schema: r_akon
+    tables:
+      - name: teams
+      - name: organizations
+  - name: crowdcrm
+    schema: crowdcrm
+    tables:
+      - name: fct_spam_profile_view
+      - name: dim_suspicious_ips
+      - name: fct_aggregated_ipqs_score
+
+# TESTS DEFINITIONS
+models:
+  - name: dim_customers
+    description: "The dimension model for the AC customers"
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_contributors
+    description: "The dimension model for the AC contributors"
+    columns:
+      - name: contributor_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+      - name: tenant_id
+        description: "The foreign key to the qrp.tenants table"
+
+      - name: campaign_id
+        description: "The foreign key to the qrp.campaigns table"
+
+      - name: tenant
+        description: "The tenant name from table qrp.tenants"
+
+      - name: num_days_in_user_status
+        description: "The number of days the user remained in the same status"
+
+      - name: first_name
+        description: "User first name"
+
+      - name: last_name
+        description: "User last name"
+
+      - name: contributor_name
+        description: "The user first name and user last name together"
+
+      - name: email
+        description: "The user email"
+
+      - name: state
+        description: "The user state"
+
+      - name: city
+        description: "The user city"
+
+      - name: country
+        description: "The user country"
+
+      - name: status
+        description: "The user status"
+
+      - name: express_status
+        description: "The user express_status"
+
+      - name: phone_number
+        description: "The user phone_number"
+
+      - name: date_created
+        description: "Date when the user was created on AC"
+
+      - name: last_user_update
+        description: "Date when occurred the last user update."
+
+      - name: age
+        description: "The user age"
+
+      - name: gender
+        description: "The user gender"
+
+      - name: raterqualification_provider
+        description: "The user raterqualification_provider from qrp.user_profiles"
+
+      - name: language
+        description: "The user language. This is comes from qrp.user.primary_locale. Its the first 3 letters of this field."
+
+      - name: dialect
+        description: "The user dialect. This is comes from qrp.user.primary_locale. Its the last 3 letters of this field."
+
+      - name: locale_country
+        description: |
+          """
+          Locale country from dim_locales. First we join with qrp.exp_user_locales to get locale_id, 
+          then we join with qrp.exp_locales to get this locale_country.
+          """
+      - name: spoken_fluency
+        description: "The user spoken_fluency from qrp.exp_user_locales"
+
+      - name: written_fluency
+        description: "The user written_fluency from qrp.exp_user_locales"
+
+      - name: type
+        description: "This is the type of user email unsubscription from table qrp.user_email_unsubscriptions"
+
+      - name: is_unsubs_in_type
+        description: "Boolean flag indicates user is unsubscribed"
+
+      - name: user_application_source
+        description: "The source which redirected the user to AC. From qrp.campaigns table"
+
+      - name: last_login
+        description: "Last time the users logged in AC"

@@ -1,0 +1,21 @@
+version: 2
+
+# SOURCES DEFINITIONS
+sources:
+  - name: system
+    tables:
+      - name: stl_scan
+      - name: svv_table_info
+      - name: pg_user
+
+# TESTS DEFINITIONS
+models:
+  - name: redshift_tables_scan
+    columns:
+      - name: table_id
+        tests:
+          - not_null
+      - name: unique_key
+        tests:
+          - unique
+          - not_null

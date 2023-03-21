@@ -1,0 +1,33 @@
+
+version: 2
+
+# SOURCES DEFINITIONS
+sources:
+  - name: qrp
+    schema: qrp
+    tables:
+      - name: exp_user_project_mappings
+      - name: partner_invoice_data
+      - name: users
+      - name: exp_locales
+      - name: exp_projects
+  - name: dim
+    schema: dim
+    tables:
+      - name: dim_proj_internotes
+  - name: pub_keycloak
+    schema: pub_keycloak
+    tables:
+      - name: user_entity
+
+# TESTS DEFINITIONS
+models:
+  - name: falcon_awd_roster_dt
+    columns:
+      - name: project_id
+        tests:
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+

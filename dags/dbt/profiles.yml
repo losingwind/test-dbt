@@ -1,0 +1,212 @@
+# For more information on how to configure this file, please see:
+# https://docs.getdbt.com/docs/profile
+config:
+  send_anonymous_usage_stats: False
+
+appen_redshift_invoicing:
+  target: STAGE
+  outputs:
+    STAGE:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: staging
+      schema: invoicing
+      threads: 1
+      keepalives_idle: 0
+    PROD:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: dwprod
+      schema: invoicing
+      threads: 1
+      keepalives_idle: 0
+appen_redshift_recruiting:
+  target: STAGE
+  outputs:
+    STAGE:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: staging
+      schema: recruiting
+      threads: 1
+      keepalives_idle: 0
+    PROD:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: dwprod
+      schema: recruiting
+      threads: 1
+      keepalives_idle: 0
+appen_redshift_mixpanel:
+  target: STAGE
+  outputs:
+    STAGE:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: staging
+      schema: mixpanel
+      threads: 1
+      keepalives_idle: 0
+    PROD:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: dwprod
+      schema: mixpanel
+      threads: 1
+      keepalives_idle: 0
+appen_redshift_ipqs:
+  target: STAGE
+  outputs:
+    STAGE:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: staging
+      schema: ipqs
+      threads: 1
+      keepalives_idle: 0
+    PROD:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: dwprod
+      schema: ipqs
+      threads: 1
+      keepalives_idle: 0
+appen_redshift_dim:
+  target: STAGE
+  outputs:
+    STAGE:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: staging
+      schema: dim
+      threads: 1
+      keepalives_idle: 0
+    PROD:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: dwprod
+      schema: dim
+      threads: 1
+      keepalives_idle: 0
+appen_redshift_shasta:
+  target: STAGE
+  outputs:
+    STAGE:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: staging
+      schema: shasta
+      threads: 1
+      keepalives_idle: 0
+    PROD:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: dwprod
+      schema: shasta
+      threads: 1
+      keepalives_idle: 0
+appen_redshift_edw_monitoring:
+  target: STAGE
+  outputs:
+    STAGE:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: staging
+      schema: edw_monitoring
+      threads: 1
+      keepalives_idle: 0
+    PROD:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: dwprod
+      schema: edw_monitoring
+      threads: 1
+      keepalives_idle: 0
+appen_redshift_e2master:
+  target: STAGE
+  outputs:
+    STAGE:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: staging
+      schema: e2_master
+      threads: 1
+      keepalives_idle: 0
+    PROD:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: dwprod
+      schema: e2_master
+      threads: 1
+      keepalives_idle: 0
+appen_redshift_fraud:
+  target: STAGE
+  outputs:
+    STAGE:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: staging
+      schema: fraud
+      threads: 1
+      keepalives_idle: 0
+    PROD:
+      type: redshift
+      host: "{{ env_var('elt_host') }}"
+      user: "{{ env_var('elt_user') }}"
+      pass: "{{ env_var('elt_pass') }}"
+      port: "{{ env_var('elt_port') | as_number }}"
+      dbname: dwprod
+      schema: fraud
+      threads: 1
+      keepalives_idle: 0

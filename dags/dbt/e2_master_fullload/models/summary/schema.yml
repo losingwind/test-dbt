@@ -1,0 +1,185 @@
+version: 2
+
+#SOURCES
+sources:
+  - name: e2_stage
+    schema: e2_stage
+    tables:
+      - name: project
+      - name: exambatch
+      - name: exambatchforcefailuserid
+      - name: exambatchphaseinfo
+      - name: exambatchphaseinforaterscore
+      - name: exambatchphaseinforaterscorescore
+      - name: exambatchraterid
+      - name: item
+      - name: itemoriginalprojectsummary
+      - name: itemparameters
+      - name: locale
+      - name: projecteventpivot
+      - name: projectitemdiscussion
+      - name: property
+      - name: task
+      - name: taskassertions
+      - name: taskevent
+      - name: taskeventpivot
+      - name: taskgoldenassertions
+      - name: taskprojectsummary
+      - name: user
+      - name: userannotation
+      - name: userauthentication
+      - name: useremployment
+      - name: userflag
+      - name: usergroup
+      - name: userlocaleid
+      - name: userprobation
+      - name: userraterpoolmembership
+      - name: userraterscores
+      - name: userraterscoresscore
+      - name: userrecentdevice
+      - name: userrecentdeviceinstalledapp
+      - name: usertrivia
+      - name: userusergroupsummary
+
+# TESTS
+models:
+  - name: exambatch
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','exambatch')
+  - name: exambatchforcefailuserid
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','exambatchforcefailuserid')
+  - name: exambatchphaseinfo
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','exambatchphaseinfo')
+  - name: exambatchphaseinforaterscore
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','exambatchphaseinforaterscore')
+  - name: exambatchphaseinforaterscorescore
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','exambatchphaseinforaterscorescore')
+  - name: exambatchraterid
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','exambatchraterid')
+  - name: item
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','item')
+  - name: itemoriginalprojectsummary
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','itemoriginalprojectsummary')
+  - name: itemparameters
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','itemparameters')
+  - name: locale
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','locale')
+  - name: project
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','project')
+  - name: projecteventpivot
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','projecteventpivot')
+  - name: property
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','property')
+  - name: task
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','task')
+  - name: taskassertions
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','taskassertions')
+  - name: taskevent
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','taskevent')
+  - name: taskeventpivot
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','taskeventpivot')
+  - name: taskprojectsummary
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','taskprojectsummary')
+  - name: user
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','user')
+  - name: userannotation
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','userannotation')
+  - name: userauthentication
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','userauthentication')
+  - name: useremployment
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','useremployment')
+  - name: userflag
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','userflag')
+  - name: usergroup
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','usergroup')
+  - name: userlocaleid
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','userlocaleid')
+  - name: userprobation
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','userprobation')
+  - name: userraterpoolmembership
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','userraterpoolmembership')
+  - name: userraterscores
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','userraterscores')
+  - name: userraterscoresscore
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','userraterscoresscore')
+  - name: userrecentdevice
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','userrecentdevice')
+  - name: userrecentdeviceinstalledapp
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','userrecentdeviceinstalledapp')
+  - name: usertrivia
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','usertrivia')
+  - name: userusergroupsummary
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','userusergroupsummary')
+  - name: taskgoldenassertions
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','taskgoldenassertions')
+  - name: projectitemdiscussion
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('e2_stage','projectitemdiscussion')

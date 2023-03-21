@@ -1,0 +1,100 @@
+version: 2
+
+# SOURCES DEFINITIONS
+sources:
+  - name: qrp
+    schema: qrp
+    tables:
+      - name: bpm_user_processes
+      - name: bpm_user_process_steps
+      - name: bpm_process_steps
+      - name: bpm_steps
+      - name: bpm_user_process_step_attributes
+      - name: quiz_trackers
+      - name: resource_mappings
+      - name: users
+      - name: user_status_changes
+      - name: exp_user_project_access_status_changes
+      - name: exp_user_project_mappings
+      - name: esign_signatures
+      - name: user_profiles
+      - name: tenants
+      - name: user_activity_log_records
+      - name: user_intelligent_attributes
+      - name: exp_intelligent_attributes
+      - name: exp_projects
+      - name: exp_project_hiring_targets
+      - name: exp_locales
+      - name: exp_user_locales
+      - name: user_email_unsubscriptions
+      - name: campaigns
+  - name: invoicing
+    schema: invoicing
+    tables:
+      - name: fct_contributor_invoices
+  - name: recruiting
+    schema: recruiting
+    tables:
+      - name: fct_funnel_report_flow_status
+  - name: dim
+    schema: dim
+    tables:
+      - name: dim_country
+      - name: dim_contributors
+  - name: mixpanel
+    schema: mixpanel
+    tables:
+      - name: fct_contributors_verify_email
+
+# TESTS DEFINITIONS
+models:
+  - name: new_rtc_and_revoked_users
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - assert_rtc_events_by_user_id
+      - name: project_id
+        tests:
+          - not_null
+
+  - name: new_rtc_and_revoked_users_daily
+    columns:
+      - name: project_id
+        tests:
+          - not_null
+      - name: rtc_date
+        tests:
+          - not_null
+
+  - name: uolo_user_registration_process
+    columns:
+      - name: project_id
+        tests:
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+
+  - name: uolo_user_registration_process_steps
+    columns:
+      - name: project_id
+        tests:
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+
+  - name: fct_user_projects
+    description: |
+      """
+      This table is based on table qrp.exp_user_project_mappings and contains data for each user related to their
+      registered projects.
+      """
+    columns:
+      - name: project_id
+        tests:
+          - not_null
+      - name: contributor_id
+        tests:
+          - not_null

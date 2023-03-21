@@ -1,0 +1,31 @@
+version: 2
+
+# SOURCES DEFINITIONS
+sources:
+  - name: qrp
+    schema: qrp
+    tables:
+      - name: exp_projects
+      - name: exp_user_project_rates
+      - name: users
+      - name: invoice_adjustments
+      - name: invoice_special_adjustments
+      - name: invoices
+      - name: invoice_events
+  - name: dim
+    schema: dim
+    tables:
+      - name: dim_contributors
+
+# TESTS DEFINITIONS
+models:
+  - name: fct_contributor_invoices
+    description: |
+      """"
+      This is the fact table for the invoices items. On AC each invoice can have multiple invoice items for multiple projects.
+      and this table contains the data for each of these items.
+      """
+    columns:
+      - name: invoice_id
+        tests:
+          - not_null

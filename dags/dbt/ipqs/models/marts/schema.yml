@@ -1,0 +1,29 @@
+version: 2
+
+# SOURCES DEFINITIONS
+sources:
+  - name: r_ipqs
+    schema: r_ipqs
+    tables:
+      - name: ip_quality_history
+
+# TESTS DEFINITIONS
+models:
+  - name: ip_quality_history
+    columns:
+      - name: id
+        tests:
+          - not_null
+          - unique
+      - name: created_at
+        tests:
+          - not_null
+      - name: login_at
+        tests:
+          - not_null
+      - name: login_id
+        tests:
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
