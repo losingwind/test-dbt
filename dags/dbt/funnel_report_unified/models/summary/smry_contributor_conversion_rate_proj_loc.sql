@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='table', sort=['project_id', 'locale_id']
+        materialized='table'
         , tags=["summary"]
     )
 }}
@@ -17,7 +17,7 @@ WITH smry_contributor_conversion_rate_proj_loc AS (
         , AVG(DATEDIFF(DAY, ready_to_contribute_active_date, first_invoice)) AS rtc_to_first_invoice
         , CONVERT_TIMEZONE('UTC', 'US/Pacific', GETDATE()) AS edw_date_created
     FROM
-        {{ ref('fct_contributor_lifecycle_pl_sort') }}
+        {{ ref('fct_contributor_lifecycle') }}
     GROUP BY
         project_id, locale_id
 )

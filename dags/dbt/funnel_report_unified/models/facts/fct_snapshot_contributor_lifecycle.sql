@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='table',dist='user_id', sort=['user_id', 'project_id', 'locale_id']
+        materialized='table'
         , tags=["fact"]
     )
 }}

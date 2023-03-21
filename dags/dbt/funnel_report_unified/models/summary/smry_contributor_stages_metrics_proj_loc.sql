@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='table',dist='registration_date', sort=['project_id', 'locale_id']
+        materialized='table'
         , tags=["summary"]
     )
 }}
@@ -23,7 +23,7 @@ WITH smry_contributor_stages_metrics_proj_loc AS (
         ) AS invoiced
         , CONVERT_TIMEZONE('UTC', 'US/Pacific', GETDATE()) AS edw_date_created
     FROM
-        {{ ref('fct_contributor_lifecycle_pl_sort') }}
+        {{ ref('fct_contributor_lifecycle') }}
     GROUP BY
         project_id, locale_id
 )

@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='table',dist='registration_date', sort=['project_id', 'locale_id']
+        materialized='table'
         , tags=["summary"]
     )
 }}
