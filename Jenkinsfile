@@ -3,7 +3,7 @@
 // Copyright (c) 2020, Appen Limited
 // All rights reserved - Do Not Redistribute]
 
-@Library('jenkins-libs') _
+@Library('jenkins-libs-test') _
 
 airflowDAGsPipeline {
   credentialsName = 'airflow-dags'
